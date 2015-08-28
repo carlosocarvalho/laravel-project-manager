@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: CocProject
+        psr4_prefix: CocProject
+        src_path: app
