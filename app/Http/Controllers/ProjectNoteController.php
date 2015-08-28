@@ -3,28 +3,28 @@
 namespace CocProject\Http\Controllers;
 
 
-use CocProject\Repositories\ClientRepository;
-use CocProject\Services\ClientService;
+use CocProject\Repositories\ProjectNoteRepository;
+use CocProject\Services\ProjectNoteService;
 use Illuminate\Http\Request;
 
 use CocProject\Http\Controllers\Controller;
 
 
 
-class ClientController extends Controller
+class ProjectNoteController extends Controller
 {
 
-
     /**
-     * @var ClientRepository
+     * @var ProjectNoteRepository
      */
     private $repository;
+
     /**
-     * @var ClientService
+     * @var ProjectNoteService
      */
     private $service;
 
-    public function __construct(ClientRepository $repository, ClientService $service){
+    public function __construct(ProjectNoteRepository $repository, ProjectNoteService $service){
         $this->repository = $repository;
         $this->service = $service;
     }
@@ -33,9 +33,9 @@ class ClientController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index($project_id)
     {
-        return $this->repository->all();
+        return $this->repository->findWhere(['project_id'=>$project_id]);
     }
 
     /**
@@ -44,9 +44,10 @@ class ClientController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $project_id, $id)
     {
-        return $this->service->create($request->all());
+
+        return $this->service->create(array_merge($request->all(),array('project_id'=>$project_id)));
     }
 
     /**
@@ -55,9 +56,9 @@ class ClientController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($project_id, $id)
     {
-       return $this->repository->find($id);
+       return $this->repository->findWhere(['project_id'=>$project_id, 'id'=>$id]);
     }
 
     /**
@@ -67,13 +68,11 @@ class ClientController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $project_id,$id)
     {
-        //$client =  $this->repository->find($id);
+        $note =  $this->repository->findWhere(['project_id'=>$project_id, 'id'=>$id]);
+        return $this->service->update(array_merge($request->all(),['project_id'=>$project_id]) , $note['0']->id);
 
-        $this->service->update($request->all() , $id);
-
-        return $request->all();
     }
 
     /**
@@ -82,7 +81,7 @@ class ClientController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($project_id,$id)
     {
         //
         $this->repository->find($id)->delete();

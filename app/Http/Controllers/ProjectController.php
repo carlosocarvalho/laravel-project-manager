@@ -3,28 +3,28 @@
 namespace CocProject\Http\Controllers;
 
 
-use CocProject\Repositories\ClientRepository;
-use CocProject\Services\ClientService;
+use CocProject\Repositories\ProjectRepository;
+use CocProject\Services\ProjectService;
 use Illuminate\Http\Request;
 
 use CocProject\Http\Controllers\Controller;
 
 
 
-class ClientController extends Controller
+class ProjectController extends Controller
 {
 
 
     /**
-     * @var ClientRepository
+     * @var ProjectRepository
      */
     private $repository;
     /**
-     * @var ClientService
+     * @var ProjectService
      */
     private $service;
 
-    public function __construct(ClientRepository $repository, ClientService $service){
+    public function __construct(ProjectRepository $repository, ProjectService $service){
         $this->repository = $repository;
         $this->service = $service;
     }
@@ -69,7 +69,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //$client =  $this->repository->find($id);
+        //$Project =  $this->repository->find($id);
 
         $this->service->update($request->all() , $id);
 

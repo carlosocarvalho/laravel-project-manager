@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => CocProject\User::class,
+    'model' => CocProject\Entities\User::class,
 
     /*
     |--------------------------------------------------------------------------
