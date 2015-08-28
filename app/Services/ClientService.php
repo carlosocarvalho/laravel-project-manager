@@ -43,7 +43,7 @@ class ClientService
 
      }
 
-    public  function udpate(array $data, $id){
+    public  function update(array $data, $id){
         try{
 
             $this->validator->with($data)->passesOrFail();
