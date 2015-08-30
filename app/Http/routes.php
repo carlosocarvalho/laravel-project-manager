@@ -1,30 +1,30 @@
 <?php
 
 
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
-Route::post('oauth/access_token',function(){
+Route::post('oauth/access_token', function () {
     return Response::json(Authorizer::issueAccessToken());
 });
 
-Route::get('client',['middleware'=>'oauth','uses'=>'ClientController@index']);
-Route::get('client/{id}','ClientController@show');
-Route::delete('client/{id}','ClientController@destroy');
-Route::post('client','ClientController@store');
-Route::put('client/{id}','ClientController@update');
+Route::group(['middleware' => 'oauth'], function () {
+
+    Route::resource('client', 'ClientController', ['except' => ['create', 'edit']]);
+    Route::group(['prefix' => 'project'], function () {
+        Route::get('{id}/notes', 'ProjectNoteController@index');
+        Route::get('{project_id}/notes/{id}', 'ProjectNoteController@show');
+        Route::post('{project_id}/notes', 'ProjectNoteController@store');
+        Route::put('{project_id}/notes/{id}', 'ProjectNoteController@update');
+        Route::delete('{project_id}/notes/{id}', 'ProjectNoteController@destroy');
+        Route::post('{project_id}/file', 'ProjectFileController@store');
+    });
+
+    Route::resource('project', 'ProjectController', ['except' => ['create', 'edit']]);
+    //Route::resource('project/notes','ProjectController',['except'=>['create','edit']]);
+
+});
 
 
-Route::get('project/{id}/notes','ProjectNoteController@index');
-Route::get('project/{project_id}/notes/{id}','ProjectNoteController@show');
-Route::post('project/{project_id}/notes','ProjectNoteController@store');
-Route::put('project/{project_id}/notes/{id}','ProjectNoteController@update');
-Route::delete('project/{project_id}/notes/{id}','ProjectNoteController@destroy');
 
-Route::get('project','ProjectController@index');
-Route::get('project/{id}','ProjectController@show');
-Route::delete('project/{id}','ProjectController@destroy');
-Route::post('project','ProjectController@store');
-Route::put('project/{id}','ProjectController@update');

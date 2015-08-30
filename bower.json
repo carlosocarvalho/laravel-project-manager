@@ -1,0 +1,23 @@
+{
+  "name": "cocproject",
+  "version": "1.0.0",
+  "homepage": "https://github.com/carlosocarvalho/laravel-project-manager",
+  "authors": [
+    "Carlos Carvalho <contato@carlosocarvalho.com.br>"
+  ],
+  "description": "manager project",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "1.4.1",
+    "angular-route": "1.4.1",
+    "angular-resource": "1.4.1",
+    "angular-animate": "1.4.1",
+    "angular-messages": "1.4.1",
+    "angular-bootstrap": "0.13.0",
+    "angular-strap": "2.2.4",
+    "bootstrap": "3.3.5"
+  }
+}

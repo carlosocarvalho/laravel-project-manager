@@ -6,12 +6,14 @@ namespace CocProject\Http\Controllers;
 use CocProject\Repositories\ProjectRepository;
 use CocProject\Services\ProjectService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 use CocProject\Http\Controllers\Controller;
 
 
 
-class ProjectController extends Controller
+class ProjectFileController extends Controller
 {
 
 
@@ -44,9 +46,24 @@ class ProjectController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $project_id)
     {
-        return $this->service->create($request->all());
+
+
+        $file = $request->file('file');
+        $ext  = $file->getClientOriginalExtension();
+
+        $this->service->createFile([
+            'file'        => $file,
+            'extension'         => $ext,
+            'name'        => $request->name,
+            'project_id'  => $project_id,
+            'description' => $request->description
+        ]);
+
+
+
+
     }
 
     /**
