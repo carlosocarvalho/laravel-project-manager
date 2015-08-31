@@ -9,6 +9,8 @@
 namespace CocProject\Repositories;
 
 use CocProject\Entities\Client;
+
+use CocProject\Presenters\ClientPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository
@@ -17,4 +19,8 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
        return Client::class;
    }
 
+    /*
+   public  function presenter(){
+       return ClientPresenter::class;
+   }*/
 }
