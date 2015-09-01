@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Cliente Edição
+                </div>
+                <div class="panel-body">
+
+                    <form method="post" name="clientForm" ng-submit="save()">
+                        <div class="form-group" ng-class="{'has-error': !clientForm.name.$valid && clientForm.name.$touched }">
+                            <label for="#">Nome</label>
+                            <input type="text" required name="name"  class="form-control" ng-model="client['name']"/>
+
+                            <div ng-messages="clientForm.name.$error" ng-show="clientForm.name.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': !clientForm.responsible.$valid && clientForm.responsible.$touched }">
+                            <label for="#">Responsavel</label>
+                            <input type="text" required name="responsible" class="form-control" ng-model="client['responsible']"/>
+                            <div ng-messages="clientForm.responsible.$error" ng-show="clientForm.responsible.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': !clientForm.email.$valid && clientForm.email.$touched }">
+                            <label for="#">E-mail</label>
+                            <input type="email" required name="email" class="form-control" ng-model="client['email']"/>
+                            <div ng-messages="clientForm.email.$error" ng-show="clientForm.email.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': !clientForm.phone.$valid && clientForm.phone.$touched }">
+                            <label for="#">Telefone</label>
+                            <input type="text" required name="phone" class="form-control" ng-model="client['phone']"/>
+                            <div ng-messages="clientForm.phone.$error" ng-show="clientForm.phone.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': !clientForm.address.$valid && clientForm.address.$touched }">
+                            <label for="#">Endereço</label>
+                            <input type="text" required name="address" class="form-control" ng-model="client['address']"/>
+                            <div ng-messages="clientForm.address.$error" ng-show="clientForm.address.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="#">Observação </label>
+                            <textarea name="obj" ng-model="client['obs']" id=""  rows="4" class="form-control"></textarea>
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Cadastrar">
+                            &nbsp;
+                            <a ng-href="#/clients" class="btn btn-danger">Cancelar</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

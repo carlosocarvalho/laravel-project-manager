@@ -10,7 +10,7 @@ namespace CocProject\Transformers;
 
 use CocProject\Entities\Project;
 use League\Fractal\TransformerAbstract;
-use \CocProject\Transformers\ProjectMemberTransformer;
+use CocProject\Transformers\ProjectMemberTransformer;
 
 class ProjectTransformer extends  TransformerAbstract
 {

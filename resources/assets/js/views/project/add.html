@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Projeto Cadastro
+                </div>
+                <div class="panel-body">
+
+                    <form method="post" name="projectForm" ng-submit="save()">
+                        <div class="form-group" ng-class="{'has-error': !projectForm.name.$valid && projectForm.name.$touched }">
+                            <label for="#">Nome</label>
+                            <input type="text" required name="name"  class="form-control" ng-model="project['name']"/>
+
+                            <div ng-messages="projectForm.name.$error" ng-show="projectForm.name.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': !projectForm.responsible.$valid && projectForm.responsible.$touched }">
+                            <label for="#">Responsavel</label>
+                            <input type="text" required name="responsible" class="form-control" ng-model="project['responsible']"/>
+                            <div ng-messages="projectForm.responsible.$error" ng-show="projectForm.responsible.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': !projectForm.email.$valid && projectForm.email.$touched }">
+                            <label for="#">E-mail</label>
+                            <input type="email" required name="email" class="form-control" ng-model="project['email']"/>
+                            <div ng-messages="projectForm.email.$error" ng-show="projectForm.email.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': !projectForm.phone.$valid && projectForm.phone.$touched }">
+                            <label for="#">Telefone</label>
+                            <input type="text" required name="phone" class="form-control" ng-model="project['phone']"/>
+                            <div ng-messages="projectForm.phone.$error" ng-show="projectForm.phone.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': !projectForm.address.$valid && projectForm.address.$touched }">
+                            <label for="#">Endereço</label>
+                            <input type="text" required name="address" class="form-control" ng-model="project['address']"/>
+                            <div ng-messages="projectForm.address.$error" ng-show="projectForm.address.$touched" class="help-block" >
+                                <div ng-message="required">Campo obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="#">Observação </label>
+                            <textarea name="obj" ng-model="project['obs']" id=""  rows="4" class="form-control"></textarea>
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Cadastrar">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

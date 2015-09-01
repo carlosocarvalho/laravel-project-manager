@@ -44,7 +44,7 @@ class ProjectNoteController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request, $project_id, $id)
+    public function store(Request $request, $project_id)
     {
 
         return $this->service->create(array_merge($request->all(),array('project_id'=>$project_id)));
@@ -58,6 +58,7 @@ class ProjectNoteController extends Controller
      */
     public function show($project_id, $id)
     {
+         //$this->repository->where
        return $this->repository->findWhere(['project_id'=>$project_id, 'id'=>$id]);
     }
 

@@ -32,5 +32,9 @@ class CocProjectRepositoryProvider extends ServiceProvider
 
         $this->app->bind( \CocProject\Repositories\ProjectNoteRepository::class ,
             \CocProject\Repositories\ProjectNoteRepositoryEloquent::class );
+
+
+        $this->app->bind( \CocProject\Repositories\UserRepository::class ,
+            \CocProject\Repositories\UserRepositoryEloquent::class );
     }
 }

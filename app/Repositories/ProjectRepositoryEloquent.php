@@ -2,10 +2,9 @@
 
 namespace CocProject\Repositories;
 
-use CocProject\Presenters\ProjectPresenter;
+
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use CocProject\Repositories\ProjectRepository;
 use CocProject\Entities\Project;
 
 /**
@@ -38,6 +37,8 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
             return true;
         return false;
     }
+
+
 
 
     public function hasMember($projectId, $memberId){

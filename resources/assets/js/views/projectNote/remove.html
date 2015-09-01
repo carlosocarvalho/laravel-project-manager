@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   Exclusão de Cliente  <a ng-href="#/clients/{{client['id']}}/edit" class="pull-right">Editar</a>
+                </div>
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>Código</dt>
+                        <dd>{{client['id']}}</dd>
+                        <dt>Nome</dt>
+                        <dd>{{client['name']}}</dd>
+                        <dt>Responsável</dt>
+                        <dd>{{client['responsible']}}</dd>
+                        <dt>E-mail</dt>
+                        <dd>{{client['email']}}</dd>
+                        <dt>Telefone</dt>
+                        <dd>{{client['phone']}}</dd>
+                        <dt>Endereço</dt>
+                        <dd>{{client['address']}}</dd>
+                        <dt>Observação</dt>
+                        <dd>{{client['obs']}}</dd>
+                    </dl>
+
+                  <h4 class="text-center">Deseja remover o registro ?</h4>
+                </div>
+                <div class="panel-footer text-center">
+                    <a ng-click="save(client['id'])" class="btn btn-primary">Sim</a>
+                    &nbsp;
+
+                    <a ng-href="#/clients" class="btn btn-danger">Não</a>
+                    &nbsp;
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

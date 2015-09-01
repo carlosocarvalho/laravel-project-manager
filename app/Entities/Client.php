@@ -15,4 +15,8 @@ class Client extends Model
         'obs',
         'phone',
     ];
+
+    function projects(){
+        return $this->hasMany(Project::class,'client_id','id');
+    }
 }
